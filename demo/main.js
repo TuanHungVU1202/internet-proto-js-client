@@ -21,8 +21,14 @@ const defaultTestStreamUrl = testStreams[Object.keys(testStreams)[0]].url;
 const sourceURL = decodeURIComponent(getURLParam('src', defaultTestStreamUrl));
 
 // Define url of different views
-const url_left = 'http://localhost:8001/360demo.m3u8';
-const url_middle = 'http://localhost:8001/360demo3.m3u8';
+const url_0_45 = 'http://localhost:8001/a0_45.m3u8';
+const url_45_90 = 'http://localhost:8001/a45_90.m3u8';
+const url_90_135 = 'http://localhost:8001/a90_135.m3u8';
+const url_135_180 = 'http://localhost:8001/a135_180.m3u8';
+const url_180_225 = 'http://localhost:8001/a180_225.m3u8';
+const url_225_270 = 'http://localhost:8001/a225_270.m3u8';
+const url_270_315 = 'http://localhost:8001/a270_315.m3u8';
+const url_315_360 = 'http://localhost:8001/a315_360.m3u8';
 
 let demoConfig = getURLParam('demoConfig', null);
 if (demoConfig) {
@@ -1802,18 +1808,44 @@ function toggleTab(btn, dontHideOpenTabs) {
 
 // Functions to switch views
 function switchView(btn, viewSide) {
-  if ('left' == viewSide){
-    console.log('Switching to left');
-    document.getElementById('streamURL').value = url_left;
+  if ('0-45' == viewSide){
+    console.log('Switching to 0-45');
+    document.getElementById('streamURL').value = url_0_45;
   }
   
-  else if ('middle' == viewSide){
-    console.log('Switching to middle');
-    document.getElementById('streamURL').value = url_middle;
+  else if ('45-90' == viewSide){
+    console.log('Switching to 45-90');
+    document.getElementById('streamURL').value = url_45_90;
   }
   
-  else if ('right' == viewSide){
-    console.log('Switching to right');
+  else if ('90-135' == viewSide){
+    console.log('Switching to 90-135');
+    document.getElementById('streamURL').value = url_90_135;
+  }
+
+  else if ('135-180' == viewSide){
+    console.log('Switching to 135-180');
+    document.getElementById('streamURL').value = url_135_180;
+  }
+
+  else if ('180-225' == viewSide){
+    console.log('Switching to 180-225');
+    document.getElementById('streamURL').value = url_180_225;
+  }
+
+  else if ('225-270' == viewSide){
+    console.log('Switching to 225-270');
+    document.getElementById('streamURL').value = url_225_270;
+  } 
+
+  else if ('270-315' == viewSide){
+    console.log('Switching to 270-315');
+    document.getElementById('streamURL').value = url_270_315;
+  }
+
+  else if ('315-360' == viewSide){
+    console.log('Switching to 315-360');
+    document.getElementById('streamURL').value = url_315_360;
   } 
   loadSelectedStream();
 }

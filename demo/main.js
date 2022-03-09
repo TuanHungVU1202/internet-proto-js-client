@@ -13,11 +13,16 @@ const STORAGE_KEYS = {
   Hls_Config: 'hlsjs:config',
   volume: 'hlsjs:volume',
   demo_tabs: 'hlsjs:demo-tabs',
+
 };
 
 const testStreams = require('../tests/test-streams');
 const defaultTestStreamUrl = testStreams[Object.keys(testStreams)[0]].url;
 const sourceURL = decodeURIComponent(getURLParam('src', defaultTestStreamUrl));
+
+// Define url of different views
+const url_left = 'http://localhost:8001/360demo.m3u8';
+const url_middle = 'http://localhost:8001/360demo3.m3u8';
 
 let demoConfig = getURLParam('demoConfig', null);
 if (demoConfig) {
@@ -269,6 +274,9 @@ function setupGlobals() {
   self.toggleTab = toggleTab;
   self.toggleTabClick = toggleTabClick;
   self.applyConfigEditorValue = applyConfigEditorValue;
+
+  // Switch views functions
+  self.switchView = switchView;
 }
 
 function trimArray(target, limit) {
@@ -1790,6 +1798,24 @@ function toggleTab(btn, dontHideOpenTabs) {
       chart.hide();
     }
   }
+}
+
+// Functions to switch views
+function switchView(btn, viewSide) {
+  if ('left' == viewSide){
+    console.log('Switching to left');
+    document.getElementById('streamURL').value = url_left;
+  }
+  
+  else if ('middle' == viewSide){
+    console.log('Switching to middle');
+    document.getElementById('streamURL').value = url_middle;
+  }
+  
+  else if ('right' == viewSide){
+    console.log('Switching to right');
+  } 
+  loadSelectedStream();
 }
 
 function appendLog(textElId, message) {
